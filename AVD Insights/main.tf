@@ -94,9 +94,14 @@ variable "session_host_resource_group_name" {
   default     = "az140-21e-RG"
 }
 
-variable "session_host_vm_names" {
-  description = "Names of existing AVD session host VMs that should receive Azure Monitor Agent and DCR association."
-  type        = list(string)
+variable "session_host_prefix" {
+  description = "Session host naming prefix."
+  type        = string
+}
+
+variable "session_host_count" {
+  description = "Number of session hosts."
+  type        = number
 }
 
 variable "data_collection_rule_name" {
@@ -182,8 +187,8 @@ data "azurerm_virtual_desktop_application_group" "application_groups" {
 }
 
 data "azurerm_virtual_machine" "session_hosts" {
-  count               = length(var.session_host_vm_names)
-  name                = var.session_host_vm_names[count.index]
+  count               = length(local.session_host_vm_names)
+  name                = local.session_host_vm_names[count.index]
   resource_group_name = var.session_host_resource_group_name
 }
 
