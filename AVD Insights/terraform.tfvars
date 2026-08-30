@@ -1,7 +1,7 @@
 # Azure identity and subscription details
 # Replace these values before running terraform plan/apply.
 subscription_id = "00000000-0000-0000-0000-000000000000"
-tenant_id       = "00000000-0000-0000-0000-000000000000"
+tenant_id       = "00000000-0000-0000-0000-00000000000"
 location        = "eastus"
 
 # AVD monitoring lab resource names
